@@ -1,13 +1,20 @@
-import { Card } from "@/app/ui/dashboard/cards";
 import RevenueChart from "../../ui/dashboard/revenue-chart";
 import LatestInvoices from "../../ui/dashboard/latest-invoices";
 import { lusitana } from "@/app/ui/fonts";
 import { Suspense } from "react";
 import CardWrapper from "@/app/ui/dashboard/cards";
-import { LatestInvoicesSkeleton, RevenueChartSkeleton, CardSkeleton } from "@/app/ui/skeletons";
+import {
+  LatestInvoicesSkeleton,
+  RevenueChartSkeleton,
+  CardSkeleton,
+} from "@/app/ui/skeletons";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+};
 
 export default async function Page() {
-
   return (
     <main>
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
@@ -23,7 +30,7 @@ export default async function Page() {
           <RevenueChart />
         </Suspense>
         <Suspense fallback={<LatestInvoicesSkeleton />}>
-        <LatestInvoices  />
+          <LatestInvoices />
         </Suspense>
       </div>
     </main>
